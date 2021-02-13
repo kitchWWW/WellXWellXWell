@@ -203,7 +203,7 @@ function initWater() {
 
 	const brickTexture = new THREE.TextureLoader().load( "res/tile2.jpg" );
 	const coinTexture = new THREE.TextureLoader().load( "res/bron.jpg" );
-	const starTexture = new THREE.TextureLoader().load( "res/stars.jpg" );
+	// const starTexture = new THREE.TextureLoader().load( "res/stars.jpg" );
 
 
 
@@ -239,7 +239,6 @@ function initWater() {
 	const loader = new THREE.TextureLoader();
 	const bgTexture = loader.load('res/stars.jpg');
 	scene.background = bgTexture;
-
 	// var floorgeometry = new THREE.PlaneGeometry(BOUNDS*5, BOUNDS*5);
 
 	// const florMat = new THREE.MeshBasicMaterial( {map: starTexture} );
@@ -565,11 +564,9 @@ function onPointerMove(event){
 // }
 
 function animate() {
-
 	requestAnimationFrame(animate);
 	render();
 	stats.update();
-
 }
 
 
@@ -767,6 +764,10 @@ var useLaptop = document.getElementById("useLaptop");
 var useInsta = document.getElementById("useInsta");
 
 var contentModal1 = document.getElementById("myContentModal1");
+var contentModal2 = document.getElementById("myContentModal2");
+var contentModal3 = document.getElementById("myContentModal3");
+var contentModal4 = document.getElementById("myContentModal4");
+var contentModal5 = document.getElementById("myContentModal5");
 
 
 
@@ -781,6 +782,12 @@ setTimeout(function(){
 useBoth.onclick = function(){ startUsing(true,true)}
 useLaptop.onclick = function(){ startUsing(true,false)}
 useInsta.onclick = function(){ startUsing(false,true)}
+document.getElementById("startOver").onclick = startOver
+document.getElementById("returnToWell1").onclick = returnToWell1
+document.getElementById("returnToWell2").onclick = returnToWell2
+document.getElementById("returnToWell3").onclick = returnToWell3
+document.getElementById("returnToWell4").onclick = returnToWell4
+document.getElementById("returnToWell5").onclick = returnToWell5
 
 
 function dismissModal(){
@@ -788,21 +795,99 @@ function dismissModal(){
 	document.getElementById("info").style.display="block";
 }
 
+var effectsToShow = []
+
 function startUsing(laptop, insta) {
 	if(laptop){
 		startCameraUsage()
 	}
 	dismissModal()
  	coinInHand = true;
+ 	if(laptop && insta){
+ 		effectsToShow = [contentModal1, contentModal3, contentModal2,contentModal4, contentModal5]
+ 	}else if(laptop){
+ 		effectsToShow = [contentModal3] 		
+ 	}else{
+ 		effectsToShow = [contentModal1, contentModal2,contentModal4, contentModal5]
+ 	}
 }
+function startOver(){
+	document.getElementById("thanksforcoming").style.display = "none";
+ 	coinInHand = false;
+ 	shouldShowEndMessage = false;
+ 	indexIntoShow = 0;
+	modal.style.display = "block";
+}
+
+
+var indexIntoShow = 0;
+var shouldShowEndMessage = false
 
 function displayContentModal(){
 	document.getElementById("info").style.display="none";
-	contentModal1.style.display = "block";
+	effectsToShow[indexIntoShow].style.display = "block";
+	indexIntoShow += 1;
+	if(indexIntoShow >= effectsToShow.length){
+		shouldShowEndMessage = true
+	}
 }
 
-function returnToWell(){
-	modalContent.style.display="none"
+function displayEndMessage(){
+	document.getElementById("thanksforcoming").style.display = "block";
+}
+
+function returnToWell1(){
+	contentModal1.style.display="none"
+	if(shouldShowEndMessage){
+		displayEndMessage()
+		return
+	}
+	setTimeout(function(){
+		coinInHand = true
+	}, TESTING ? 10 : 2000);
+}
+
+function returnToWell2(){
+	contentModal2.style.display="none"
+	if(shouldShowEndMessage){
+		displayEndMessage()
+		return
+	}
+	setTimeout(function(){
+		coinInHand = true
+	}, TESTING ? 10 : 2000);
+}
+function returnToWell3(){
+	contentModal3.style.display="none"
+	if(shouldShowEndMessage){
+		displayEndMessage()
+		return
+	}
+	setTimeout(function(){
+		coinInHand = true
+	}, TESTING ? 10 : 2000);
+}
+
+function returnToWell4(){
+	contentModal4.style.display="none"
+	if(shouldShowEndMessage){
+		displayEndMessage()
+		return
+	}
+	setTimeout(function(){
+		coinInHand = true
+	}, TESTING ? 10 : 2000);
+}
+
+function returnToWell5(){
+	contentModal5.style.display="none"
+	if(shouldShowEndMessage){
+		displayEndMessage()
+		return
+	}
+	setTimeout(function(){
+		coinInHand = true
+	}, TESTING ? 10 : 2000);
 }
 
 

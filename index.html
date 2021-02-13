@@ -1,5 +1,6 @@
  <!DOCTYPE html>
 <html lang="en">
+<script src="redirect.js"></script>
 	<head>
 		<title>well X well X well</title>
 		<meta charset="utf-8">
@@ -29,6 +30,28 @@
   padding: 20px;
   border: 3px solid #888;
   width: 60%;
+  font-size: xx-large;
+  border-radius: 10px;
+}
+
+/* Modal Content */
+.modal-content-spark {
+  background-color: rgba(150,150,150,.8);
+  margin: auto;
+  padding: 20px;
+  border: 3px solid #888;
+  width: 40%;
+  font-size: xx-large;
+  border-radius: 10px;
+}
+
+/* Modal Content */
+.modal-content-laptop {
+  background-color: rgba(150,150,150,.8);
+  margin: auto;
+  padding: 20px;
+  border: 3px solid #888;
+  width: 40%;
   font-size: xx-large;
   border-radius: 10px;
 }
@@ -71,14 +94,104 @@
 <!-- The Modal -->
 <div id="myContentModal1" class="modal">
   <!-- Modal content -->
+  <div class="modal-content-spark">
+<!--     <span class="close">&times;</span>
+ -->    <p>well, this dream was a little unclear - something about being a space dragon.<p>
+ 		<center>
+ 			<img src="/codes/spaceman.png" width="300px">
+ 			<p><i>effect by Brian Ellis</i></p>
+	 	<a id="returnToWell1" title="use both" href="#" onclick="return false;">return to the well</a>
+	 	</center>
+
+  </div>
+</div>
+
+<!-- The Modal -->
+<div id="myContentModal2" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content-spark">
+<!--     <span class="close">&times;</span>
+ -->    <p>this dream was pretty straight forward, the kind you could bring into reality at a county fair.<p>
+ 		<center>
+ 			<img src="/codes/unicorn.png" width="300px">
+ 			<p><i>effect by Brian Ellis</i></p>
+	 	<a id="returnToWell2" title="use both" href="#" onclick="return false;">return to the well</a>
+	 	</center>
+
+  </div>
+</div>
+
+
+
+
+<!-- The Modal -->
+<div id="myContentModal3" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content-laptop">
+<!--     <span class="close">&times;</span>
+ -->    <p>this wish was for movement, for little drops of rain, and for the intimate sounds of trying to get someone's attention.<p>
+ 	<ul>
+ 		<li>Make sure you stand back from the camera</li>
+ 		<li>Make sure the laptop can see your face and hands</li>
+ 	</ul>
+ 		<center>
+		 	<a title="use both" href="/showcases/expandingCircle.html" target="_blank">go to wish</a>
+
+ 			<p><i>effect by Brian Ellis</i></p>
+	 	<a id="returnToWell3" title="use both" href="#" onclick="return false;">return to the well</a>
+	 	</center>
+  </div>
+</div>
+
+
+
+<!-- The Modal -->
+<div id="myContentModal4" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content-spark">
+<!--     <span class="close">&times;</span>
+ -->    <p>being alone is hard...<p>
+ 		<center>
+ 			<img src="/codes/community.png" width="300px">
+ 			<p><i>effect by Brian Ellis</i></p>
+	 	<a id="returnToWell4" title="use both" href="#" onclick="return false;">return to the well</a>
+	 	</center>
+  </div>
+</div>
+
+
+
+<!-- The Modal -->
+<div id="myContentModal5" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content-spark">
+<!--     <span class="close">&times;</span>
+ -->    <p>Voice // identity // Becoming something you are not.<p>
+ 		<center>
+ 			<img src="/codes/vocal.png" width="300px">
+ 			<p><i>effect by Brian Ellis</i></p>
+	 	<a id="returnToWell5" title="use both" href="#" onclick="return false;">return to the well</a>
+	 	</center>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+<!-- The Modal -->
+<div id="thanksforcoming" class="modal">
+  <!-- Modal content -->
   <div class="modal-content">
 <!--     <span class="close">&times;</span>
- -->    <p>Well, the well, well, can't tell everyone's wishes apart once they are all in the well.</p>
- 		<p>You can rest assured that this is somebody's wish<p>
+ -->    <p>Thats all folks, thanks for coming and checking this out!<p>
  		<center>
- 			<img src="codes/spaceMan.png" width="300px">
- 			<p><i>effect by Brian Ellis</i></p>
-	 	<a id="returnToWell" title="use both" href="#" onclick="return false;">return to the well</a>
+ 			<p><i>installation by Brian Ellis</i></p>
+ 			<p><i>Presented by Density 512</i></p>
+	 	<a id="startOver" title="start over" href="#" onclick="return false;">start again?</a>
 	 	</center>
 
   </div>
@@ -330,7 +443,6 @@
 			}
 
 		</script>
-	  <script src="water.js" type="module"></script>
-	  <script src="sketch.js"></script>
+	  <script src="/water.js" type="module"></script>
 	</body>
 </html>
