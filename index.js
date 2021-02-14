@@ -1,5 +1,6 @@
 import * as THREE from '/three.js/build/three.module.js';
 
+// import Stats from '/three.js/examples/jsm/libs/stats.module.js';
 import {
 	GUI
 } from '/three.js/examples/jsm/libs/dat.gui.module.js';
@@ -24,13 +25,13 @@ const BOUNDS = 512;
 const BOUNDS_HALF = BOUNDS * 0.5;
 var SPEED = .01;
 
-let container;
+let container;//, stats;
 let cylinder;
 let coinIsFalling;
 let coinInHand = false;
 let coinVelocity;
 let COIN_HEIGHT = 250;
-let coinDropSound;
+
 let camera, scene, renderer;
 let mouseMoved = false;
 let leftEyeVisibile = false;
@@ -565,6 +566,7 @@ function onPointerMove(event){
 function animate() {
 	requestAnimationFrame(animate);
 	render();
+	// stats.update();
 }
 
 
@@ -611,8 +613,6 @@ function render() {
     	}
     	if(cylinder.position.y < -100){
     		coinIsFalling = false
-    		coinDropSound.stop()
-    		coinDropSound.play()
     		coinVelocity = 0
     		setTimeout(function(){
     			displayContentModal()
@@ -812,7 +812,6 @@ function startUsing(laptop, insta) {
  	}else{
  		effectsToShow = [contentModal1, contentModal2,contentModal4, contentModal5]
  	}
- 	startBasicAudio()
 }
 function startOver(){
 	document.getElementById("thanksforcoming").style.display = "none";
@@ -907,29 +906,33 @@ function returnToWell6(){
 
 
 
-var useLowBuzz = true
-function startBasicAudio(){
-	console.log("playing audio!")
-	var fileToPlay = new Pizzicato.Sound({ 
-    	source: 'file',
-    	options: {
-    		path: '/res/longmixdown3.mp3',
-    		loop: true,
-    		volume: .2,
-    		}
-    }, function() {
-		fileToPlay.play()
-	});
+
+// // When the user clicks on <span> (x), close the modal
+// mySpan.onclick = function() {
+// 	// dismissModal()
+// }
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+	// dismissModal()
+  }
 }
 
-coinDropSound = new Pizzicato.Sound({ 
-	source: 'file',
-	options: {
-		path: '/res/coinDropSound.mp3',
-		volume: .5,
-		}
-}, function() {
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

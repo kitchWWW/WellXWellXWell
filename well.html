@@ -11,12 +11,12 @@
 
   gtag('config', 'G-DRBW5PQR5D');
 </script>
-
 		<title>Well Well Well</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
 	  <script src="https://unpkg.com/ml5@0.3.1/dist/ml5.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.1/Pizzicato.min.js"></script>
 <style>
 /* The Modal (background) */
 .modal {
@@ -88,11 +88,15 @@
 <div id="myModal" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
-
-    <h1>welcome<br><br><center>to the Well Well Well</center></h1>
+<!--     <span class="close">&times;</span>
+ -->    <p>Hi! Welcome to the Well Well Well.</p>
     <p> We've got some super neat things to share with you - these are bits of creative coding, musical mirrors, virtual face masks, and other snippets of technology that we hope can transport and transform you. </p>
-    <p>To view the full gamut of what we've put together, you'll need both a phone with the instagram or facebook app, as well as to let us access your laptop's camera - don't worry, the video does not get sent back to our server. If you only want to do one of these things, thats ok, there'll just be a little less content.</p>
-    <p>The well is still under construction right now, so please check back later as we go live Sunday, February 14th at 4:00pm CST.</p>
+    <p>To view the full gamut of what we've put together, you'll need both a phone with the instagram app, as well as to let us access your laptop's camera - don't worry, the video does not get sent back to our server. If you only want to do one of these things, thats ok, there'll just be a little less content.</p>
+    <ul>
+    <li><a id="useBoth" title="use both" href="#" onclick="return false;">use both instagram and the laptop camera</a></li>
+	<li><a id="useLaptop" title="use both" href="#" onclick="return false;">use just the laptop camera</a></li>
+	<li><a id="useInsta" title="use both" href="#" onclick="return false;">use just the instagram app</a></li>
+</ul>
   </div>
 </div>
 
@@ -466,6 +470,6 @@
 			}
 
 		</script>
-	  <script src="/index.js" type="module"></script>
+	  <script src="/water.js" type="module"></script>
 	</body>
 </html>
