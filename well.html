@@ -88,14 +88,28 @@
 <div id="myModal" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
-<!--     <span class="close">&times;</span>
- -->    <p>Hi! Welcome to the Well Well Well.</p>
-    <p> We've got some super neat things to share with you - these are bits of creative coding, musical mirrors, virtual face masks, and other snippets of technology that we hope can transport and transform you. </p>
-    <p>To view the full gamut of what we've put together, you'll need both a phone with the instagram app, as well as to let us access your laptop's camera - don't worry, the video does not get sent back to our server. If you only want to do one of these things, thats ok, there'll just be a little less content.</p>
+    <h1>Hi!<br><br><center>welcome!</center></h1>
+    <p> We're about to get started, but first we need to make sure you have everything you need for this experience. This installation has experiences that use the camera on your phone and on your computer. To make the most of this, I'd recommend you have both devices ready. If you only want to use one or the other though, that is ok - just select whichever case applies  to you below.</p>
     <ul>
-    <li><a id="useBoth" title="use both" href="#" onclick="return false;">use both instagram and the laptop camera</a></li>
-	<li><a id="useLaptop" title="use both" href="#" onclick="return false;">use just the laptop camera</a></li>
-	<li><a id="useInsta" title="use both" href="#" onclick="return false;">use just the instagram app</a></li>
+    <li><a id="useBoth" title="" href="#" onclick="return false;">use both an app and the laptop camera (recommended)</a></li>
+	<li><a id="useLaptop" title="" href="#" onclick="return false;">use just the laptop camera</a></li>
+	<li><a id="useInsta" title="" href="#" onclick="return false;">use just an app</a></li>
+</ul>
+  </div>
+</div>
+
+
+
+<!-- The Modal -->
+<div id="followUpChooseApp" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+  	<h1>Follow up question: </h1>
+    <p>Would you rather use instagram or facebook?</p>
+    <p>We will show you QR codes that will take you to the effects. These won't post anything on your profile.</p>
+    <ul>
+    <li><a id="useInstagram" title="" href="#" onclick="return false;">use my phone's Instagram app</a></li>
+	<li><a id="useFacebook" title="" href="#" onclick="return false;">use my phone's Facebook app</a></li>
 </ul>
   </div>
 </div>
@@ -108,7 +122,7 @@
 <!--     <span class="close">&times;</span>
  -->    <p>well, this dream was a little unclear - something about being a space dragon.<p>
  		<center>
- 			<img src="/codes/spaceman.png" width="300px">
+ 			<img id="spaceman_qr" src="/codes/spaceman.png" width="300px">
  			<p><i>effect by Brian Ellis</i></p>
 	 	<a id="returnToWell1" title="use both" href="#" onclick="return false;">return to the well</a>
 	 	</center>
@@ -123,7 +137,7 @@
 <!--     <span class="close">&times;</span>
  -->    <p>this dream was pretty straight forward, the kind you could bring into reality at a county fair.<p>
  		<center>
- 			<img src="/codes/unicorn.png" width="300px">
+ 			<img id="unicorn_qr" src="/codes/unicorn.png" width="300px">
  			<p><i>effect by Brian Ellis</i></p>
 	 	<a id="returnToWell2" title="use both" href="#" onclick="return false;">return to the well</a>
 	 	</center>
@@ -161,7 +175,7 @@
 <!--     <span class="close">&times;</span>
  -->    <p>being alone is hard...<p>
  		<center>
- 			<img src="/codes/community.png" width="300px">
+ 			<img id="community_qr" src="/codes/community.png" width="300px">
  			<p><i>effect by Brian Ellis</i></p>
 	 	<a id="returnToWell4" title="use both" href="#" onclick="return false;">return to the well</a>
 	 	</center>
@@ -177,7 +191,7 @@
 <!--     <span class="close">&times;</span>
  -->    <p>Voice // identity // Becoming something you are not.<p>
  		<center>
- 			<img src="/codes/vocal.png" width="300px">
+ 			<img id="vocal_qr" src="/codes/vocal.png" width="300px">
  			<p><i>effect by Brian Ellis</i></p>
 	 	<a id="returnToWell5" title="use both" href="#" onclick="return false;">return to the well</a>
 	 	</center>

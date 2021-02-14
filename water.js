@@ -11,7 +11,7 @@ import {
 	SimplexNoise
 } from '/three.js/examples/jsm/math/SimplexNoise.js';
 
-const TESTING = true
+const TESTING = false
 
 
 
@@ -757,11 +757,15 @@ if(poses.length > 0){
 // Get the modal
 var modal = document.getElementById("myModal");
 var modalContent = document.getElementById("modalContent");
+var followUpModal = document.getElementById("followUpChooseApp");
 
 // Get the button that opens the modal
 var useBoth = document.getElementById("useBoth");
 var useLaptop = document.getElementById("useLaptop");
 var useInsta = document.getElementById("useInsta");
+
+var useInstagram = document.getElementById("useInstagram");
+var useFacebook = document.getElementById("useFacebook");
 
 var contentModal1 = document.getElementById("myContentModal1");
 var contentModal2 = document.getElementById("myContentModal2");
@@ -780,9 +784,9 @@ setTimeout(function(){
   modal.style.display = "block";
 }, TESTING ? 10: 3000);
 
-useBoth.onclick = function(){ startUsing(true,true)}
+useBoth.onclick = function(){ startFollowup(true,true)}
 useLaptop.onclick = function(){ startUsing(true,false)}
-useInsta.onclick = function(){ startUsing(false,true)}
+useInsta.onclick = function(){ startFollowup(false,true)}
 document.getElementById("startOver").onclick = startOver
 document.getElementById("returnToWell1").onclick = returnToWell1
 document.getElementById("returnToWell2").onclick = returnToWell2
@@ -793,17 +797,38 @@ document.getElementById("returnToWell6").onclick = returnToWell6
 
 
 function dismissModal(){
-	modal.style.display = "none";
-	document.getElementById("info").style.display="block";
+}
+
+function changeSrcTo(suffix){
+	document.getElementById("spaceman_qr").src="/codes/spaceman_"+suffix+".png";
+	document.getElementById("unicorn_qr").src="/codes/unicorn_"+suffix+".png";
+	document.getElementById("community_qr").src="/codes/community_"+suffix+".png";
+	document.getElementById("vocal_qr").src="/codes/vocal_"+suffix+".png";
 }
 
 var effectsToShow = []
+
+function startFollowup(laptop, insta){
+	modal.style.display = "none";
+	followUpModal.style.display = "block"
+	useInstagram.onclick = function(){
+		followUpModal.style.display = "none"
+		changeSrcTo("insta");
+		startUsing(laptop,insta);
+	}
+	useFacebook.onclick = function(){
+		followUpModal.style.display = "none"
+		changeSrcTo("fb")
+		startUsing(laptop,insta)
+	}
+}
 
 function startUsing(laptop, insta) {
 	if(laptop){
 		startCameraUsage()
 	}
-	dismissModal()
+	modal.style.display = "none";
+	document.getElementById("info").style.display="block";
  	coinInHand = true;
  	if(laptop && insta){
  		effectsToShow = [contentModal1, contentModal3, contentModal2,contentModal4, contentModal5,contentModal6]
@@ -840,6 +865,7 @@ function displayEndMessage(){
 }
 
 function returnToWell1(){
+	document.getElementById("info").style.display="block";
 	contentModal1.style.display="none"
 	if(shouldShowEndMessage){
 		displayEndMessage()
@@ -851,6 +877,7 @@ function returnToWell1(){
 }
 
 function returnToWell2(){
+	document.getElementById("info").style.display="block";
 	contentModal2.style.display="none"
 	if(shouldShowEndMessage){
 		displayEndMessage()
@@ -861,6 +888,7 @@ function returnToWell2(){
 	}, TESTING ? 10 : 2000);
 }
 function returnToWell3(){
+	document.getElementById("info").style.display="block";
 	contentModal3.style.display="none"
 	if(shouldShowEndMessage){
 		displayEndMessage()
@@ -872,6 +900,7 @@ function returnToWell3(){
 }
 
 function returnToWell4(){
+	document.getElementById("info").style.display="block";
 	contentModal4.style.display="none"
 	if(shouldShowEndMessage){
 		displayEndMessage()
@@ -883,6 +912,7 @@ function returnToWell4(){
 }
 
 function returnToWell5(){
+	document.getElementById("info").style.display="block";
 	contentModal5.style.display="none"
 	if(shouldShowEndMessage){
 		displayEndMessage()
@@ -894,6 +924,7 @@ function returnToWell5(){
 }
 
 function returnToWell6(){
+	document.getElementById("info").style.display="block";
 	contentModal6.style.display="none"
 	if(shouldShowEndMessage){
 		displayEndMessage()
@@ -915,7 +946,7 @@ function startBasicAudio(){
     	options: {
     		path: '/res/longmixdown3.mp3',
     		loop: true,
-    		volume: .2,
+    		volume: .05,
     		}
     }, function() {
 		fileToPlay.play()
@@ -926,7 +957,7 @@ coinDropSound = new Pizzicato.Sound({
 	source: 'file',
 	options: {
 		path: '/res/coinDropSound.mp3',
-		volume: .5,
+		volume: .2,
 		}
 }, function() {
 });
