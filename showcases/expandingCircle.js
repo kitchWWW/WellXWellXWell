@@ -94,15 +94,15 @@ function drawKeypoints()  {
       // wnose.y = wnose.y * scalingFactor + (pose.nose.y * (1-scalingFactor))
       drawExpandingCircle(skeleScaleX(pose.nose.x),skeleScaleY(pose.nose.y),"100%,0%,100%",300)
     }
-    if(pose.leftWrist.confidence > 0.5){
+    if(pose.leftWrist.confidence > 0.3){
       // wleftWrist.x = wleftWrist.x * scalingFactor + (pose.leftWrist.x * (1-scalingFactor))
       // wleftWrist.y = wleftWrist.y * scalingFactor + (pose.leftWrist.y * (1-scalingFactor))
-      drawExpandingCircle(skeleScaleX(pose.leftWrist.x),skeleScaleY(pose.leftWrist.y),"100%,40%,100%",100)
+      drawExpandingCircle(skeleScaleX(pose.leftWrist.x),skeleScaleY(pose.leftWrist.y),"90%,40%,100%",100)
     }
-    if(pose.rightWrist.confidence > 0.5){
+    if(pose.rightWrist.confidence > 0.3){
       // wrightWrist.x = wrightWrist.x * scalingFactor + (pose.rightWrist.x * (1-scalingFactor))
       // wrightWrist.y = wrightWrist.y * scalingFactor + (pose.rightWrist.y * (1-scalingFactor))
-      drawExpandingCircle(skeleScaleX(pose.rightWrist.x),skeleScaleY(pose.rightWrist.y),"100%,40%,100%",100)
+      drawExpandingCircle(skeleScaleX(pose.rightWrist.x),skeleScaleY(pose.rightWrist.y),"90%,40%,100%",100)
     }
 
     // for (let j = 0; j < pose.keypoints.length; j++) {
@@ -143,7 +143,12 @@ function drawExpandingCircle(x,y,color,maxSize){
 }
 
 
+function makeSmallCircle(){
+  drawExpandingCircle(Math.random() * windowWidth, Math.random() * windowHeight, "90%,90%,90%",400)
+  setTimeout(makeSmallCircle, 400);
+}
 
+setTimeout(makeSmallCircle, 2000);
 
 
 

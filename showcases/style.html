@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/image@0.2.1/dist/magentaimage.min.js"></script>
+  </head>
+  <img id="contentImg" src="images/turtle.jpg"/>
+<img id="styleImg" src="images/kadinsky.jpg"/>
+<button id="mybutton" onclick="buttonGo()" class="btn btn-transfer">
+  <i class="fas fa-random"></i><span>Click to transfer</span>
+</button>
+<canvas id="stylized"></canvas>
+<script type="text/javascript">
+  const model = new mi.ArbitraryStyleTransferNetwork();
+const canvas = document.getElementById('stylized');
+const ctx = canvas.getContext('2d');
+const contentImg = document.getElementById('contentImg');
+const styleImg = document.getElementById('styleImg');
+function buttonGo() {
+  model.initialize().then(() => {
+    stylize();
+  });
+}
+ 
+async function stylize() {
+  // Resize the canvas to be the same size as the source image.
+  canvas.width = contentImg.width;
+  canvas.height = contentImg.height;
+  // This does all the work!
+  model.stylize(contentImg, styleImg).then((imageData) => {
+    ctx.putImageData(imageData, 0, 0);
+  });
+}
+</script>
+</html>

@@ -768,6 +768,7 @@ var contentModal2 = document.getElementById("myContentModal2");
 var contentModal3 = document.getElementById("myContentModal3");
 var contentModal4 = document.getElementById("myContentModal4");
 var contentModal5 = document.getElementById("myContentModal5");
+var contentModal6 = document.getElementById("myContentModal6");
 
 
 
@@ -788,6 +789,7 @@ document.getElementById("returnToWell2").onclick = returnToWell2
 document.getElementById("returnToWell3").onclick = returnToWell3
 document.getElementById("returnToWell4").onclick = returnToWell4
 document.getElementById("returnToWell5").onclick = returnToWell5
+document.getElementById("returnToWell6").onclick = returnToWell6
 
 
 function dismissModal(){
@@ -804,9 +806,9 @@ function startUsing(laptop, insta) {
 	dismissModal()
  	coinInHand = true;
  	if(laptop && insta){
- 		effectsToShow = [contentModal1, contentModal3, contentModal2,contentModal4, contentModal5]
+ 		effectsToShow = [contentModal1, contentModal3, contentModal2,contentModal4, contentModal5,contentModal6]
  	}else if(laptop){
- 		effectsToShow = [contentModal3] 		
+ 		effectsToShow = [contentModal3, contentModal6]
  	}else{
  		effectsToShow = [contentModal1, contentModal2,contentModal4, contentModal5]
  	}
@@ -890,6 +892,17 @@ function returnToWell5(){
 	}, TESTING ? 10 : 2000);
 }
 
+function returnToWell6(){
+	contentModal6.style.display="none"
+	if(shouldShowEndMessage){
+		displayEndMessage()
+		return
+	}
+	setTimeout(function(){
+		coinInHand = true
+	}, TESTING ? 10 : 2000);
+}
+
 
 
 
@@ -905,3 +918,36 @@ window.onclick = function(event) {
 	// dismissModal()
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
