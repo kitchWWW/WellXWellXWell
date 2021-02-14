@@ -13,6 +13,7 @@ let poseNet;
 let poses = [];
 var actualWindowWidth
 var actualWindowHeight
+var canPlayPitches = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -32,13 +33,20 @@ function setup() {
   actualWindowHeight = windowHeight
 }
 
+pitchesToPlay = [['d3','e3'],['d3','e3','g3'],['e3','g3','a3'],['g3','a3','c4'],['a3','c4','e4'],['c4','e4','g4'],['e4','g4','a4'],['g4','a4','c5'],['a4','c5','d5'],['c5','d5','e5'],['d5','e5']]
+
+textToShow = ['loading...','click to start audio','running!']
+textToShowIndex = 0
 function modelReady() {
-  // select('#status').html('Model Loaded');
+  if(textToShowIndex == 0){
+    textToShowIndex+=1
+  }
 }
 
 
 function draw() {
   clear();
+
   // image(video, 0, 0, width, height);
 
   // We can call both functions to draw all keypoints and the skeletons
@@ -58,6 +66,11 @@ function draw() {
       i--
     }
   }
+  fill(100, 100, 100);
+  strokeWeight(0);
+  textSize(32);
+  // print(textToShow[textToShowIndex])
+  text(textToShow[textToShowIndex], 20, 40);
 }
 
 function skeleScaleX(x){
@@ -89,20 +102,22 @@ function drawKeypoints()  {
     // For each pose detected, loop through all the keypoints
     let pose = poses[i].pose;
     if(pose.nose.confidence > 0.5){
-      console.log(wnose);
       // wnose.x = wnose.x * scalingFactor + (pose.nose.x * (1-scalingFactor))
       // wnose.y = wnose.y * scalingFactor + (pose.nose.y * (1-scalingFactor))
       drawExpandingCircle(skeleScaleX(pose.nose.x),skeleScaleY(pose.nose.y),"100%,0%,100%",300)
+      playPitch(0,skeleScaleX(pose.nose.x),skeleScaleY(pose.nose.y));
     }
     if(pose.leftWrist.confidence > 0.3){
       // wleftWrist.x = wleftWrist.x * scalingFactor + (pose.leftWrist.x * (1-scalingFactor))
       // wleftWrist.y = wleftWrist.y * scalingFactor + (pose.leftWrist.y * (1-scalingFactor))
       drawExpandingCircle(skeleScaleX(pose.leftWrist.x),skeleScaleY(pose.leftWrist.y),"90%,40%,100%",100)
+      playPitch(1,skeleScaleX(pose.leftWrist.x),skeleScaleY(pose.leftWrist.y));
     }
     if(pose.rightWrist.confidence > 0.3){
       // wrightWrist.x = wrightWrist.x * scalingFactor + (pose.rightWrist.x * (1-scalingFactor))
       // wrightWrist.y = wrightWrist.y * scalingFactor + (pose.rightWrist.y * (1-scalingFactor))
       drawExpandingCircle(skeleScaleX(pose.rightWrist.x),skeleScaleY(pose.rightWrist.y),"90%,40%,100%",100)
+      playPitch(2,skeleScaleX(pose.rightWrist.x),skeleScaleY(pose.rightWrist.y));
     }
 
     // for (let j = 0; j < pose.keypoints.length; j++) {
@@ -117,6 +132,35 @@ function drawKeypoints()  {
     // }
   }
 }
+
+
+function playPitch(chan,x,y,){
+  if(!canPlayPitches){
+    return;
+  }
+  var whichPitch = Math.round(((height - y) / height) * (fileNames.length-1))
+  print(fileNames)
+  print(whichPitch)
+  print(fileNames[whichPitch])
+  print(audioFiles)
+  audioFiles[fileNames[whichPitch]].play()
+}
+
+
+
+function windowfunction(){
+  if(textToShowIndex == 0){
+    return;
+  }
+  if(textToShowIndex == 1){
+    textToShowIndex += 1
+    canPlayPitches = true
+  }
+}
+window.onclick = windowfunction;
+
+
+
 
 // // A function to draw the skeletons
 // function drawSkeleton() {
@@ -149,6 +193,25 @@ function makeSmallCircle(){
 }
 
 setTimeout(makeSmallCircle, 2000);
+
+
+
+
+var fileNames = ['d3','e3','g3','a3','c4','e4','g4','a4','c5','d5','e5']
+var audioFiles = {}
+for(var i = 0; i < fileNames.length; i++){
+
+  var audioFile = new Pizzicato.Sound('/res/piano/'+fileNames[i]+'.mp3', function() {
+      // Sound loaded!
+    });
+  audioFiles[fileNames[i]] = audioFile
+}
+
+
+
+
+
+
 
 
 

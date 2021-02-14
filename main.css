@@ -8,6 +8,13 @@ body {
 	overscroll-behavior: none;
 }
 
+h1 {
+	margin: 0;
+	color: #fff;
+	font-family: Monospace;
+	line-height: 50px;
+}
+
 a {
 	color: #dd0;
 	text-decoration: none;

@@ -11,7 +11,7 @@ import {
 	SimplexNoise
 } from '/three.js/examples/jsm/math/SimplexNoise.js';
 
-const TESTING = false
+const TESTING = true
 
 
 

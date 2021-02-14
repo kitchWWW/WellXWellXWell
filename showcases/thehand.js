@@ -32,6 +32,7 @@ function setup() {
 
 function modelReady() {
   console.log("Model ready!");
+  currentText+=1
 }
 
 function draw() {
@@ -48,7 +49,7 @@ function draw() {
 
 var rainSize = 5;
 
-textThings = ["click to start audio...","started!","ready to go",""]
+textThings = ["loading...","click to start audio...","started!",""]
 currentText = 0
 function drawWords(){
   fill('rgba(355,255,255,1)')
@@ -149,10 +150,10 @@ function updateFilters(){
   var xSmoothed = (xSum / xLocHistory.length)
   var ySmoothed = (ySum / yLocHistory.length)
   var targetFreq = Math.pow(2, (xSmoothed / width)*14)+100
-  print(targetFreq)
   highPassFilter.frequency = targetFreq
   lowPassFilter.frequency = targetFreq
   var targetVolume = ((height - ySmoothed) / height)
+  print(targetVolume)
   fileToPlay.volume = .13 * targetVolume
 }
 
@@ -170,9 +171,12 @@ var fileToPlay = new Pizzicato.Sound({
 
 function windowfunction(){
   if(currentText == 0){
-    currentText += 1
+    return;
   }
-  fileToPlay.play()
+  if(currentText == 1){
+    currentText += 1
+    fileToPlay.play()
+  }
 }
 var highPassFilter = new Pizzicato.Effects.HighPassFilter({
     frequency: 300,
